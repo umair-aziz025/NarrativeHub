@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(45, 33%, 98%);
+  --foreground: hsl(210, 25%, 7.8431%);
+  --card: hsl(45, 33%, 96%);
+  --card-foreground: hsl(210, 25%, 7.8431%);
+  --popover: hsl(45, 33%, 98%);
+  --popover-foreground: hsl(210, 25%, 7.8431%);
+  --primary: hsl(168, 38%, 55%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(35, 26%, 52%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(45, 20%, 92%);
+  --muted-foreground: hsl(210, 25%, 45%);
+  --accent: hsl(177, 49%, 93%);
+  --accent-foreground: hsl(168, 38%, 55%);
+  --destructive: hsl(356.3033, 90.5579%, 54.3137%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(45, 20%, 90%);
+  --input: hsl(45, 33%, 95%);
+  --ring: hsl(168, 38%, 55%);
+  --chart-1: hsl(168, 38%, 55%);
+  --chart-2: hsl(159.7826, 100%, 36.0784%);
+  --chart-3: hsl(42.0290, 92.8251%, 56.2745%);
+  --chart-4: hsl(147.1429, 78.5047%, 41.9608%);
+  --chart-5: hsl(341.4894, 75.2000%, 50.9804%);
+  --sidebar: hsl(45, 33%, 96%);
+  --sidebar-foreground: hsl(210, 25%, 7.8431%);
+  --sidebar-primary: hsl(168, 38%, 55%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(177, 49%, 93%);
+  --sidebar-accent-foreground: hsl(168, 38%, 55%);
+  --sidebar-border: hsl(45, 20%, 90%);
+  --sidebar-ring: hsl(168, 38%, 55%);
+  --radius: 1.5rem;
+  
+  /* Custom color variables for the storytelling theme */
+  --warm-teal: hsl(24, 95%, 53%); /* Orange-600 equivalent */
+  --light-beige: hsl(25, 40%, 95%); /* Orange-50 equivalent */
+  --warm-brown: hsl(20, 90%, 48%); /* Orange-700 equivalent */
+  --soft-cream: hsl(25, 50%, 98%); /* Very light orange cream */
+  --story-gradient-start: hsl(25, 40%, 95%);
+  --story-gradient-end: hsl(205, 40%, 95%); /* Light blue for gradient */
+}
+
+.dark {
+  --background: hsl(0, 0%, 5%);
+  --foreground: hsl(200, 6.6667%, 91.1765%);
+  --card: hsl(228, 9.8039%, 10%);
+  --card-foreground: hsl(0, 0%, 85.0980%);
+  --popover: hsl(0, 0%, 5%);
+  --popover-foreground: hsl(200, 6.6667%, 91.1765%);
+  --primary: hsl(168, 38%, 45%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(35, 26%, 42%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 9.4118%);
+  --muted-foreground: hsl(210, 3.3898%, 56%);
+  --accent: hsl(177, 30%, 15%);
+  --accent-foreground: hsl(168, 38%, 55%);
+  --destructive: hsl(356.3033, 90.5579%, 54.3137%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 5.2632%, 14.9020%);
+  --input: hsl(207.6923, 27.6596%, 18.4314%);
+  --ring: hsl(168, 38%, 55%);
+  --warm-teal: hsl(24, 85%, 45%); /* Darker orange for dark theme */
+  --light-beige: hsl(25, 20%, 15%);
+  --warm-brown: hsl(20, 80%, 35%);
+  --soft-cream: hsl(0, 0%, 8%);
+  --story-gradient-start: hsl(25, 20%, 12%);
+  --story-gradient-end: hsl(205, 20%, 10%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Inter'];
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Playfair_Display'];
+  }
+}
+
+@layer utilities {
+  .bg-warm-teal {
+    background-color: var(--warm-teal);
+  }
+  
+  .text-warm-teal {
+    color: var(--warm-teal);
+  }
+  
+  .border-warm-teal {
+    border-color: var(--warm-teal);
+  }
+  
+  .bg-light-beige {
+    background-color: var(--light-beige);
+  }
+  
+  .bg-warm-brown {
+    background-color: var(--warm-brown);
+  }
+  
+  .text-warm-brown {
+    color: var(--warm-brown);
+  }
+  
+  .bg-soft-cream {
+    background-color: var(--soft-cream);
+  }
+  
+  .bg-story-gradient {
+    background: linear-gradient(135deg, var(--story-gradient-start), var(--story-gradient-end));
+  }
+  
+  .shadow-story {
+    box-shadow: 0 4px 6px -1px rgba(74, 155, 142, 0.1), 0 2px 4px -1px rgba(74, 155, 142, 0.06);
+  }
+
+  /* Button Animations */
+  .btn-animate {
+    @apply transition-all duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg active:scale-95;
+  }
+
+  /* Icon Animations */
+  .icon-animate {
+    @apply transition-all duration-200 ease-in-out transform hover:scale-110 hover:rotate-3;
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  /* Story Chain Animation */
+  .story-appear {
+    animation: storyAppear 0.5s ease-out forwards;
+  }
+  
+  @keyframes storyAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Floating Animation for Cookie Icon */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Heart Pulse Animation */
+  .heart-pulse {
+    animation: heartPulse 0.3s ease-in-out;
+  }
+  
+  @keyframes heartPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Theme Toggle Animation */
+  .theme-toggle {
+    @apply transition-transform duration-300 ease-in-out hover:rotate-180;
+  }
+
+  /* Shimmer Loading Effect */
+  .shimmer {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Signature Font for Cookie */
+  .font-signature {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+  }
+
+  /* Falling Animations */
+  .falling-sparkles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .sparkle {
+    position: absolute;
+    color: #f97316; /* Orange-500 */
+    animation: fall linear infinite;
+    opacity: 0.6;
+  }
+
+  .sparkle:nth-child(odd) {
+    color: #ec4899; /* Pink-500 */
+  }
+
+  .sparkle:nth-child(3n) {
+    color: #a855f7; /* Purple-500 */
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Continuous glow animation for signature */
+  .signature-glow {
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  /* Main heading glow */
+  .heading-glow {
+    animation: headingGlow 4s ease-in-out infinite alternate;
+  }
+
+  /* Hero glow for typewriter */
+  .hero-glow {
+    animation: heroGlow 3s ease-in-out infinite alternate;
+  }
+
+  /* Card hover scaling animation */
+  .card-scale-hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .card-scale-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #f97316, 0 0 10px #f97316, 0 0 15px #f97316;
+    }
+    to {
+      text-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899, 0 0 30px #ec4899, 0 0 40px #a855f7;
+    }
+  }
+
+  @keyframes headingGlow {
+    from {
+      text-shadow: 0 0 8px #f97316, 0 0 12px #f97316;
+    }
+    to {
+      text-shadow: 0 0 12px #ec4899, 0 0 18px #ec4899, 0 0 25px #a855f7;
+    }
+  }
+
+  @keyframes heroGlow {
+    from {
+      text-shadow: 0 0 15px #f97316, 0 0 25px #f97316, 0 0 35px #f97316, 0 0 45px #f97316;
+    }
+    to {
+      text-shadow: 0 0 20px #ec4899, 0 0 35px #ec4899, 0 0 50px #a855f7, 0 0 65px #a855f7, 0 0 80px #a855f7;
+    }
+  }
+
+  /* Fade in animation for typewriter */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
